@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import wall from "../src/images/wall.png";
 import coin from "../src/images/coin.png";
-import pacman from "../src/images/pacman.png";
+import pacmann from "../src/images/pacman.png";
 import bg from "../src/images/bg.png";
 import ghost from "../src/images/ghost2.png";
 import "./App.css";
@@ -41,6 +41,45 @@ const PacManGame = () => {
       });
     }
   };
+  return (
+    <div id="world" style={{ backgroundColor: "white" }}>
+      {map.map((row, rowIndex) => (
+        <div key={rowIndex}>
+          {row.map((cell, colIndex) => (
+            <div
+              key={colIndex}
+              className={
+                cell === 1
+                  ? "wall"
+                  : cell === 2
+                  ? "coin"
+                  : cell === 3
+                  ? "ground"
+                  : cell === 4
+                  ? "ghost"
+                  : cell === 5
+                  ? "pacman"
+                  : null
+              }
+              style={
+                cell === 1
+                  ? { backgroundImage: `url(${wall})` }
+                  : cell === 2
+                  ? { backgroundImage: `url(${coin})` }
+                  : cell === 3
+                  ? { backgroundImage: `url(${bg})` }
+                  : cell === 4
+                  ? { backgroundImage: `url(${ghost})` }
+                  : cell === 5
+                  ? { backgroundImage: `url(${pacmann})` }
+                  : null
+              }
+            ></div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default PacManGame;
