@@ -39,6 +39,51 @@ const PacManGame = () => {
         newMap[pacman.y][pacman.x - 1] = 5;
         return newMap;
       });
+    } else if (
+      event.keyCode === 38 &&
+      pacman.y > 0 &&
+      map[pacman.y - 1][pacman.x] !== 1
+    ) {
+      setMap((prevMap) => {
+        const newMap = [...prevMap];
+        newMap[pacman.y][pacman.x] = 3;
+        setPacman((prevPacman) => ({
+          ...prevPacman,
+          y: prevPacman.y - 1,
+        }));
+        newMap[pacman.y - 1][pacman.x] = 5;
+        return newMap;
+      });
+    } else if (
+      event.keyCode === 39 &&
+      pacman.x < map[0].length - 1 &&
+      map[pacman.y][pacman.x + 1] !== 1
+    ) {
+      setMap((prevMap) => {
+        const newMap = [...prevMap];
+        newMap[pacman.y][pacman.x] = 3;
+        setPacman((prevPacman) => ({
+          ...prevPacman,
+          x: prevPacman.x + 1,
+        }));
+        newMap[pacman.y][pacman.x + 1] = 5;
+        return newMap;
+      });
+    } else if (
+      event.keyCode === 40 &&
+      pacman.y < map.length - 1 &&
+      map[pacman.y + 1][pacman.x] !== 1
+    ) {
+      setMap((prevMap) => {
+        const newMap = [...prevMap];
+        newMap[pacman.y][pacman.x] = 3;
+        setPacman((prevPacman) => ({
+          ...prevPacman,
+          y: prevPacman.y + 1,
+        }));
+        newMap[pacman.y + 1][pacman.x] = 5;
+        return newMap;
+      });
     }
   };
   return (
