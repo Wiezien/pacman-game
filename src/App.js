@@ -85,6 +85,16 @@ const PacManGame = () => {
         return newMap;
       });
     }
+    checkWinningCondition();
+  };
+  const checkWinningCondition = () => {
+    if (!map.some((row) => row.includes(2))) {
+      setGameOver(true);
+      alert("Congratulations! You collected all the coins. You win!");
+    } else if (!map.some((row) => row.includes(4))) {
+      setGameOver(true);
+      alert("Game over !! You collided with the ghost");
+    }
   };
 
   useEffect(() => {
