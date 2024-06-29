@@ -86,6 +86,17 @@ const PacManGame = () => {
       });
     }
   };
+
+  useEffect(() => {
+    const handleKeyDownEvent = (event) => handleKeyDown(event);
+
+    document.addEventListener("keydown", handleKeyDownEvent);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDownEvent);
+    };
+  }, [handleKeyDown]);
+
   return (
     <div id="world" style={{ backgroundColor: "white" }}>
       {map.map((row, rowIndex) => (
